@@ -16,6 +16,7 @@ require 'rvg_graph/dividers'
 require 'rvg_graph/bounds'
 require 'rvg_graph/background'
 require 'rvg_graph/label_helpers'
+require 'rvg_graph/graph_helpers'
 
 module RvgGraph
 end

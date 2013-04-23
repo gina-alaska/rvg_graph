@@ -1,6 +1,8 @@
 # Draw a line graph from the data
 module RvgGraph
   class LineGraph
+    include GraphHelpers
+
     def self.draw(data, bcord, agg, canvas, data_hash, no_data_value)
       x_min = bcord.xmin
       x_max = bcord.xmax
@@ -18,7 +20,6 @@ module RvgGraph
       data_top = data["graph_top"]
       data_name = data["name"]
 
-puts "maxval: #{agg.maxval} minval: #{agg.minval} count: #{agg.count}"
       maxval = agg.maxval.to_f
       minval = agg.minval.to_f
       count = agg.count.to_f
@@ -51,7 +52,7 @@ puts "maxval: #{agg.maxval} minval: #{agg.minval} count: #{agg.count}"
 
         path = "M "
         data_hash[data_name].each do |vdata|
-          if vdata == no_data_value.to_f
+          if check_no_data(vdata, no_data_value)
             newx += ratiox
             next
           end
@@ -78,7 +79,7 @@ puts "maxval: #{agg.maxval} minval: #{agg.minval} count: #{agg.count}"
 
       data_hash[data_name].each_with_index do |vdata, index|
         dsave = vdata
-        if vdata == no_data_value.to_f
+        if check_no_data(vdata, no_data_value)
           savy = 0
           savx = newx
           newx += ratiox
