@@ -1,7 +1,7 @@
 # Draw a line graph from the data
 module RvgGraph
   class LineGraph
-    include RvgGraph::GraphHelpers
+    extend GraphHelpers
 
     def self.draw(data, bcord, agg, canvas, data_hash, no_data_value)
       x_min = bcord.xmin
