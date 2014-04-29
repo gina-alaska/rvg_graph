@@ -45,6 +45,7 @@ module RvgGraph
           raise
         end
       else
+        self.newrange += self.offset
         case self.data_top
         when "negative"
           newdata = (((data - self.minval) * self.newrange) / self.oldrange) + self.top
