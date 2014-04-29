@@ -75,10 +75,12 @@ module RvgGraph
           minor_delta = nice_tic_delta / minor_tics unless minor_tics.nil?
         else
           drange = dmax.to_i - dmin.to_i
-          puts "date range: #{drange}"
           nice_min = dmin.to_i
           nice_max = dmax.to_i
           nice_tic_delta, minor_delta, offset = Nicenum.nice_date(drange, dmin)
+          #test
+          nice_min = (dmin / nice_tic_delta).floor * nice_tic_delta
+          nice_max = (dmax / nice_tic_delta).ceil * nice_tic_delta
         end
 
         # Draw major tics and labels
