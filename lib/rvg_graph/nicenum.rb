@@ -51,5 +51,35 @@ module RvgGraph
 
       return newdate
     end
+
+    # Return nice numbers for date axis.
+    def self.nice_date(drange, dmin)
+      if drange <= 3600           # 1 hour
+        nice_tic_delta = 300      # 5 min
+        minor_delta = 30          # 30 sec
+        offset = dmin.to_i - self.date_floor(dmin, "hour").to_i
+      elsif drange <= 86400       # 1 day
+        nice_tic_delta = 3600     # 1 hour
+        minor_delta = 600         # 10 min
+        offset = dmin.to_i - self.date_floor(dmin, "day").to_i
+      elsif drange <= 604800      # 1 week
+        nice_tic_delta = 86400    # 1 day
+        minor_delta = 10800       # 3 hours
+        offset = dmin.to_i - self.date_floor(dmin, "week").to_i
+      elsif drange <= 2678400     # 1 month
+        nice_tic_delta = 86400    # 1 day
+        minor_delta = 43200       # 12 hours
+        offset = dmin.to_i - self.date_floor(dmin, "month").to_i
+      elsif drange <= 16070400    # 6 months
+        nice_tic_delta = 604800   # 1 week
+        minor_delta = 86400       # 1 day
+        offset = dmin.to_i - self.date_floor(dmin, "6.months").to_i
+      else                        # 1 year
+        nice_tic_delta = 2678400  # month
+        minor_delta = 604800      # 1 week
+        offset = dmin.to_i - self.date_floor(dmin, "year").to_i
+      end
+      return nice_tic_delta, minor_delta, offset
+    end
   end
 end
