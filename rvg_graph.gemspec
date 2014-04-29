@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'rvg_graph'
-  s.version     = '1.0.10'
+  s.version     = '1.0.11'
   s.date        = '2014-04-28'
   s.summary     = "Ruby Vector Graphics graphing library"
   s.description = "Generate graphs using RVG from RMagick"
