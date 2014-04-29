@@ -11,7 +11,7 @@ module RvgGraph
       date ||= data["date"]
 
       cnt = 0
-      data[name].each_with_index do |value.to_f, index|
+      data[name].each_with_index do |value, index|
         date_val = date.nil? ? index : date[index]
 
         unless check_no_data(value, no_data_value)
