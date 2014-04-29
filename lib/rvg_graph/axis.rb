@@ -108,9 +108,11 @@ module RvgGraph
         # Draw major tics and labels
         pos = nice_min - nice_tic_delta
         round = label["round"]
-        dmin = dmin.to_i if label["units"] == "date"
-        dmax = dmax.to_i if label["units"] == "date"
-        hard_max = hard_max.utc.to_i if label["units"] == "date"
+        if label["units"] == "date"
+          dmin = dmin.to_i
+          dmax = dmax.to_i
+          hard_max = hard_max.to_i
+        end
         convert = CalcPosition.new(gmin, gmax, data_top, dmax-dmin, gmax-gmin, dmin, offset)
 
         while pos <= nice_max do 
