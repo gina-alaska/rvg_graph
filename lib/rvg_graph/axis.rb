@@ -75,6 +75,7 @@ module RvgGraph
           minor_delta = nice_tic_delta / minor_tics unless minor_tics.nil?
         else
           drange = dmax.utc.to_i - dmin.utc.to_i
+          puts "date range: #{drange}"
           nice_min = dmin.utc.to_i
           nice_max = dmax.utc.to_i
           if drange <= 3600           # 1 hour
