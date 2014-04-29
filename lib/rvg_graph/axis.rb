@@ -96,7 +96,7 @@ module RvgGraph
           elsif drange <= 16070400    # 6 months
             nice_tic_delta = 604800   # 1 week
             minor_delta = 86400       # 1 day
-            offset = Nicenum.date_floor(dmin, "month").utc.to_i - dmin.utc.to_i
+            offset = Nicenum.date_floor(dmin, "6.months").utc.to_i - dmin.utc.to_i
           else                        # 1 year
             nice_tic_delta = 2678400  # month
             minor_delta = 604800      # 1 day

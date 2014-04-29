@@ -40,6 +40,8 @@ module RvgGraph
         newdate = date.beginning_of_day
       when "month"
         newdate = date.beginning_of_week
+      when "6.months"
+        newdate = date.beginning_of_month
       when "year"
         newdate = date.beginning_of_month
       else
