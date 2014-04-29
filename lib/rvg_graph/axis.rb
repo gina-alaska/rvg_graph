@@ -74,7 +74,7 @@ module RvgGraph
           nice_max = (dmax / nice_tic_delta).ceil * nice_tic_delta
           minor_delta = nice_tic_delta / minor_tics unless minor_tics.nil?
         else
-          drange = dmax.utc.to_i - dmin.utc.to_i
+          drange = dmax.to_i - dmin.to_i
           puts "date range: #{drange}"
           nice_min = dmin.to_i
           nice_max = dmax.to_i
@@ -100,7 +100,7 @@ module RvgGraph
             offset = Nicenum.date_floor(dmin, "6.months").to_i - dmin.to_i
           else                        # 1 year
             nice_tic_delta = 2678400  # month
-            minor_delta = 604800      # 1 day
+            minor_delta = 604800      # 1 week
             offset = Nicenum.date_floor(dmin, "year").to_i - dmin.to_i
           end
         end
