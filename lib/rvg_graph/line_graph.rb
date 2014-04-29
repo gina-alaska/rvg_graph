@@ -42,7 +42,7 @@ module RvgGraph
       newx = x_min
       newy = 0
 
-      convert = CalcPosition.new(top, bottom, data_top, oldrange, newrange, minval, 0)
+      convert = CalcPosition.new(top, bottom, data_top, oldrange, newrange, minval, 0, "line")
 
       if dstyle.fill_color
         firstnum = data_hash[data_name].first

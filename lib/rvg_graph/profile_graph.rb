@@ -25,8 +25,8 @@ module RvgGraph
       end
 
       oldrange = hard_max - hard_min
-      convertx = CalcPosition.new(x_min, x_max, "negative", oldrange, x_max-x_min, hard_min, 0)
-      converty = CalcPosition.new(y_min, y_max, "positive", phard_max-phard_min, y_max-y_min, phard_min, 0)
+      convertx = CalcPosition.new(x_min, x_max, "negative", oldrange, x_max-x_min, hard_min, 0, "profile")
+      converty = CalcPosition.new(y_min, y_max, "positive", phard_max-phard_min, y_max-y_min, phard_min, 0, "profile")
 
       # draw profile fill
       y_start = 0.7          # start position of profile (this should be from database)

@@ -65,7 +65,7 @@ module RvgGraph
             dmin = dmin.utc.to_i if axis["label"]["units"] == "date"
             dmax = dmax.utc.to_i if axis["label"]["units"] == "date"
 
-            convert = CalcPosition.new(x_min, x_max, data_top, dmax-dmin, x_max-x_min, dmin, offset)
+            convert = CalcPosition.new(x_min, x_max, data_top, dmax-dmin, x_max-x_min, dmin, offset, axis["label"]["units"])
 
             pos = nice_min
             while pos <= nice_max do

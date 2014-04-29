@@ -21,7 +21,7 @@ module RvgGraph
       oldrange = hard_max - hard_min
       newrange = bottom - top
 
-      convert = CalcPosition.new(top, bottom, data_top, oldrange, newrange, hard_min, 0)
+      convert = CalcPosition.new(top, bottom, data_top, oldrange, newrange, hard_min, 0, "depth")
       data_min = convert.calc(0, false)
       data_max = convert.calc(maxval, false)
 
