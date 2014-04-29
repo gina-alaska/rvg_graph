@@ -113,7 +113,7 @@ module RvgGraph
           dmax = dmax.to_i
           hard_max = hard_max.to_i
         end
-        convert = CalcPosition.new(gmin, gmax, data_top, dmax-dmin, gmax-gmin, dmin, offset)
+        convert = CalcPosition.new(gmin, gmax, data_top, dmax-dmin, gmax-gmin, dmin, offset, label["units"])
 
         while pos <= nice_max do 
           gpos = convert.calc_axis(pos, false)
