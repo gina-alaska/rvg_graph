@@ -36,14 +36,16 @@ module RvgGraph
               minor_delta = nice_tic_delta / minor_tics unless minor_tics.nil?
               offset = nice_min - dmin
             else
-              drange = dmax.utc.to_i - dmin.utc.to_i
-              nice_min = dmin.utc.to_i
-              nice_max = dmax.utc.to_i
+              drange = dmax.to_i - dmin.to_i
               nice_tic_delta, minor_delta, offset = Nicenum.nice_date(drange, dmin)
+              nice_min = (dmin.to_i / nice_tic_delta).floor * nice_tic_delta
+              nice_max = (dmax.to_i / nice_tic_delta).ceil * nice_tic_delta
             end
 
-            dmin = dmin.utc.to_i if axis["label"]["units"] == "date"
-            dmax = dmax.utc.to_i if axis["label"]["units"] == "date"
+            if axis["label"]["units"] == "date"
+              dmin = dmin.to_i
+              dmax = dmax.to_i
+            end
 
             convert = CalcPosition.new(x_min, x_max, data_top, dmax-dmin, x_max-x_min, dmin, offset, axis["label"]["units"])
 
