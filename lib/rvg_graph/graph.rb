@@ -68,7 +68,7 @@ module RvgGraph
         # Draw any axis and text associated with this data
         Axis.draw(data, bcord, agg, @canvas) if data["axis"]
         draw_text(data["text"]) unless data["text"].nil?
-        end_date = agg.capture_max
+        end_date = agg.capture_min
       end
 
       # Draw graph border
