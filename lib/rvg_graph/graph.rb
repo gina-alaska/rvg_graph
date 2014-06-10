@@ -46,6 +46,7 @@ module RvgGraph
       Dividers.draw(bcord, data_object, @canvas, @data_hash, @no_data)
 
       # Draw each data graph by type
+      end_date = ""
       data_object.each do |data|
         # Get aggregate information from data
         data_name = data["name"].split(",").first
@@ -67,13 +68,15 @@ module RvgGraph
         # Draw any axis and text associated with this data
         Axis.draw(data, bcord, agg, @canvas) if data["axis"]
         draw_text(data["text"]) unless data["text"].nil?
+        end_date = agg.capture_max
       end
 
       # Draw graph border
       Border.draw(@template["border"], bcord, @canvas)
 
-      # Draw the graph title if there is one
+      # Draw the graph title and graph date if there are any
       draw_title(bcord) if @template["graph"]["title"]
+      draw_date(end_date, @template["graph"]["date"]) if @template["graph"]["date"]
     end
 
     def save(filename)
@@ -104,6 +107,12 @@ module RvgGraph
         text_pos = item["position"].split(",")
         @canvas.text(text_pos[0].to_i, text_pos[1].to_i, item["text"]).styles(:fill=>tstyle.color, :font_size=>tstyle.text_size, :text_anchor=>tstyle.anchor)
       end
+    end
+
+    def draw_date(graph_date, date_template)
+      position_x, position_y = date_template["position"].split(",")
+      size = date_template["size"].to_i
+      @canvas.text(position_x.to_i, position_y.to_i, graph_date.strftime("%D %l:%M").styles(:fill=>"black", :font_size=>size)
     end
   end
 end
