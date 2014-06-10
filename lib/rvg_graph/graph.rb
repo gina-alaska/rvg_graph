@@ -76,7 +76,7 @@ module RvgGraph
 
       # Draw the graph title and graph date if there are any
       draw_title(bcord) if @template["graph"]["title"]
-      draw_date(end_date, @template["graph"]["date"]) if @template["graph"]["date"]
+      draw_date(end_date, @template["graph"]["date"]) if @template["graph"]["date"]["position"]
     end
 
     def save(filename)
