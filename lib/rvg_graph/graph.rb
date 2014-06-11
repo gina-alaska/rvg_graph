@@ -68,7 +68,7 @@ module RvgGraph
         # Draw any axis and text associated with this data
         Axis.draw(data, bcord, agg, @canvas) if data["axis"]
         draw_text(data["text"]) unless data["text"].nil?
-        end_date = agg.capture_max
+        end_date = agg.capture_max if agg.capture_max > end_date
       end
 
       # Draw graph border
@@ -112,7 +112,7 @@ module RvgGraph
     def draw_date(graph_date, date_template)
       position_x, position_y = date_template["position"].split(",")
       size = date_template["size"].to_i
-      @canvas.text(position_x.to_i, position_y.to_i, Time.zone.parse(graph_date).strftime("%D %l:%M")).styles(:fill=>"black", :font_size=>size)
+      @canvas.text(position_x.to_i, position_y.to_i, graph_date.strftime("%D %l:%M")).styles(:fill=>"black", :font_size=>size)
     end
   end
 end
