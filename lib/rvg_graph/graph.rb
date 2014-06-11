@@ -46,7 +46,7 @@ module RvgGraph
       Dividers.draw(bcord, data_object, @canvas, @data_hash, @no_data)
 
       # Draw each data graph by type
-      end_date = ""
+      end_date = Time.now - 3153600000 # 100 years ago
       data_object.each do |data|
         # Get aggregate information from data
         data_name = data["name"].split(",").first
