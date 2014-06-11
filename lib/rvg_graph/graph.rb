@@ -112,7 +112,7 @@ module RvgGraph
     def draw_date(graph_date, date_template)
       position_x, position_y = date_template["position"].split(",")
       size = date_template["size"].to_i
-      @canvas.text(position_x.to_i, position_y.to_i, graph_date.zone.strftime("%D %l:%M")).styles(:fill=>"black", :font_size=>size)
+      @canvas.text(position_x.to_i, position_y.to_i, Time.parse(graph_date.zone).strftime("%D %l:%M")).styles(:fill=>"black", :font_size=>size)
     end
   end
 end
