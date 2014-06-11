@@ -68,7 +68,7 @@ module RvgGraph
         # Draw any axis and text associated with this data
         Axis.draw(data, bcord, agg, @canvas) if data["axis"]
         draw_text(data["text"]) unless data["text"].nil?
-        end_date = agg.capture_min
+        end_date = agg.capture_max
       end
 
       # Draw graph border
@@ -76,7 +76,7 @@ module RvgGraph
 
       # Draw the graph title and graph date if there are any
       draw_title(bcord) if @template["graph"]["title"]
-      draw_date(end_date, @template["graph"]["date"]) if @template["graph"]["date"]["position"]
+      draw_date(end_date, @template["graph"]["date"]) if @template["graph"]["date"]
     end
 
     def save(filename)
