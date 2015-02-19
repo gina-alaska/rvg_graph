@@ -61,10 +61,12 @@ module RvgGraph
           path += "#{newx.to_i} #{newy.to_i} L "
           newx += ratiox
         end
+
         if dstyle.fill_to == "top"
           path += "#{x_max.to_i} #{lasty.to_i} L #{x_max.to_i} #{top.to_i}
           L #{x_min.to_i} #{top.to_i} L #{x_min.to_i} #{firsty.to_i} z"
         else
+          lasty = top if lasty < top
           path += "#{x_max.to_i} #{lasty.to_i} L #{x_max.to_i} #{bottom.to_i}
                L #{x_min.to_i} #{bottom.to_i} L #{x_min.to_i} 
                #{firsty.to_i} z"
