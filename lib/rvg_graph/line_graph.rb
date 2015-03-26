@@ -116,6 +116,8 @@ module RvgGraph
         savy = newy
         newx += ratiox
       end
+      newx = x_min if newx < x_min
+      newx = x_max if newx > x_max
       canvas.line(savx.to_i, savy.to_i, newx.to_i, savy.to_i).styles(:stroke=>dstyle.color, :stroke_width=>dstyle.line_size, :stroke_linecap=>"round")
     end
   end
