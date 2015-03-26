@@ -6,6 +6,8 @@ module RvgGraph
     def self.draw(data, bcord, agg, canvas, data_hash, no_data_value)
       x_min = bcord.xmin
       x_max = bcord.xmax
+      y_min = bcord.ymin
+      y_max = bcord.ymax
 
       dstyle = Style.new(data["style"])
       direction = data["direction"]
