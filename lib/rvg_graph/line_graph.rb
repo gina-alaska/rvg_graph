@@ -89,7 +89,7 @@ module RvgGraph
         end
 
         newy = convert.calc(vdata, false)
-        newy = 0 if newy >= float::INFINITY
+        newy = 0 if newy >= Float::INFINITY
 
         if vdata == savemax and mark_high
           canvas.line(newx, newy-mark_high, newx, newy+mark_high).
